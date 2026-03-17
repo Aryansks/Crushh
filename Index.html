@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaradhya ❤️</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Segoe UI',sans-serif;
+background:radial-gradient(circle at top,#ff7aa2,#ff4e8a,#6a1b4d);
+overflow:hidden;
+color:white;
+}
+
+/* stars background */
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+opacity:0.8;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.3;}
+to{opacity:1;}
+}
+
+/* floating hearts */
+.heart{
+position:absolute;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
+}
+
+.container{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+padding:50px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+max-width:550px;
+}
+
+/* glowing title */
+h1{
+font-size:52px;
+color:#fff;
+text-shadow:0 0 10px pink,0 0 25px #ff4e8a;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px pink;}
+to{ text-shadow:0 0 30px #ff4e8a,0 0 50px pink;}
+}
+
+#message{
+margin-top:20px;
+font-size:20px;
+min-height:80px;
+}
+
+/* buttons */
+button{
+padding:14px 32px;
+font-size:17px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+margin:12px;
+transition:0.3s;
+}
+
+#yes{
+background:#ff2e63;
+color:white;
+box-shadow:0 5px 20px rgba(255,0,100,0.6);
+}
+
+#yes:hover{
+transform:scale(1.15);
+}
+
+#no{
+background:white;
+color:black;
+}
+
+/* fireworks */
+.firework{
+position:absolute;
+font-size:40px;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(0);}
+100%{transform:scale(2);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AARADHYA ❤️</h1>
+
+<p id="message"></p>
+
+<button id="yes">Yes ❤️</button>
+<button id="no">No 😅</button>
+
+</div>
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3">
+</audio>
+
+<script>
+
+const text="Hey Aaradhya ❤️ I built this little universe just for you. Every star, every heart here is for you. You make my days brighter and my heart happier. Will you be my special person? 💖";
+
+let i=0;
+
+function typeWriter(){
+if(i<text.length){
+document.getElementById("message").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeWriter,40);
+}
+}
+
+typeWriter();
+
+/* YES button celebration */
+document.getElementById("yes").onclick=function(){
+
+document.querySelector(".container").innerHTML=
+"<h1>YAY AARADHYA!! ❤️</h1><p>You just made me the happiest person alive 💖</p>";
+
+for(let i=0;i<80;i++){
+
+let fire=document.createElement("div");
+fire.className="firework";
+fire.innerHTML="🎆";
+
+fire.style.left=Math.random()*100+"vw";
+fire.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(fire);
+
+setTimeout(()=>{fire.remove()},1000);
+}
+
+}
+
+/* NO button runs away */
+const noBtn=document.getElementById("no");
+
+noBtn.addEventListener("mouseover",()=>{
+
+noBtn.style.position="absolute";
+noBtn.style.left=Math.random()*window.innerWidth+"px";
+noBtn.style.top=Math.random()*window.innerHeight+"px";
+
+});
+
+/* floating hearts */
+function createHeart(){
+
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*40)+"px";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove()},6000);
+
+}
+
+setInterval(createHeart,120);
+
+/* stars background */
+for(let i=0;i<120;i++){
+let star=document.createElement("div");
+star.className="star";
+
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(star);
+}
+
+</script>
+
+</body>
+</html>
